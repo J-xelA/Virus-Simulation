@@ -1,25 +1,35 @@
-import logo from './logo.svg';
+import React from "react";
+import Sketch from "react-p5";
+import {
+  setup,
+  draw,
+} from "./P5Sketch";
+
 import './App.css';
+import './style.css';
+
+let VirusSim = () => {
+  return (
+    <div>
+      <Sketch
+        setup = {(p5, canvasParentRef) => setup(p5, canvasParentRef)}
+        draw = {(p5) => draw(p5)}
+      />
+    </div>
+  );
+};
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Virus Simulation</h1>
+      <div>
+        <h3 id="healthy">Healthy:</h3>
+        <h3 id="infected">Infected:</h3>
+      </div>
+      <VirusSim />
     </div>
   );
 }
 
-export default App;
+export default App
